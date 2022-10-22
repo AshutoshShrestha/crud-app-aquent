@@ -1,20 +1,17 @@
-package com.aquent.crudapp.person;
+package com.aquent.crudapp.api.person;
+
+import com.aquent.crudapp.model.person.Person;
+import com.aquent.crudapp.service.person.PersonService;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
 /**
  * Controller for handling basic person management operations.
  */
-@Controller
+@RestController
 @RequestMapping("person")
 public class PersonController {
 
@@ -32,10 +29,8 @@ public class PersonController {
      * @return list view populated with the current list of people
      */
     @GetMapping(value = "list")
-    public ModelAndView list() {
-        ModelAndView mav = new ModelAndView("person/list");
-        mav.addObject("persons", personService.listPeople());
-        return mav;
+    public int list() {
+        return 1;
     }
 
     /**

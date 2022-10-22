@@ -1,15 +1,17 @@
-package com.aquent.crudapp.person;
+package com.aquent.crudapp.service.person;
 
+import com.aquent.crudapp.dao.person.PersonDao;
+import com.aquent.crudapp.model.person.Person;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
-
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Default implementation of {@link PersonService}.

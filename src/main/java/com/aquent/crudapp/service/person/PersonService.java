@@ -1,8 +1,9 @@
-package com.aquent.crudapp.person;
+package com.aquent.crudapp.service.person;
+
+import com.aquent.crudapp.model.person.Person;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-import org.springframework.stereotype.Service;
 
 /**
  * Person operations.
