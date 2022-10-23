@@ -29,20 +29,40 @@ public class PersonController {
      */
     @GetMapping(value = "list")
     public List<Person> list() {
-        return personService.listPeople();
+        return personService.listPerson();
     }
 
-    @GetMapping(value = "listForClient")
-    public List<Person> listForClient(@RequestParam Integer clientId) { return personService.listClientContacts(clientId);}
+    /**
+     * Sends all list of people for a client.
+     *
+     * @return list of people
+     */
+    @GetMapping(value = "listAssociatedContacts")
+    public List<Person> listAssociatedContacts(@RequestParam Integer clientId) { return personService.listAssociatedContacts(clientId);}
 
-    @GetMapping(value = "unassignedPeople")
-    public List<Person> unassignedPeople() { return personService.listUnassociatedContacts();}
+    /**
+     * Sends all list of people who have not been assigned a client.
+     *
+     * @return list of people
+     */
+    @GetMapping(value = "listUnassociatedContacts")
+    public List<Person> listUnassociatedContacts() { return personService.listUnassociatedContacts();}
 
-    @PutMapping(value="updatePersonById")
-    public int updatePersonById(@RequestParam Integer personId, @RequestParam Integer clientId) { return personService.addClientToPerson(personId, clientId);}
+    /**
+     * Sends all list of people.
+     *
+     * @return list of people
+     */
+    @PutMapping(value="addClientToPerson")
+    public int addClientToPerson(@RequestParam Integer personId, @RequestParam Integer clientId) { return personService.addClientToPerson(personId, clientId);}
 
-    @PutMapping(value="deleteClientFromPersonId")
-    public int deleteClientFromPersonId(@RequestParam Integer personId) { return personService.updateAssociatedContacts(personId);}
+    /**
+     * Sends all list of people.
+     *
+     * @return list of people
+     */
+    @PutMapping(value="deleteAssociatedClient")
+    public int deleteAssociatedClient(@RequestParam Integer personId) { return personService.deleteAssociatedClient(personId);}
 
     /**
      * Validates and saves a new person.

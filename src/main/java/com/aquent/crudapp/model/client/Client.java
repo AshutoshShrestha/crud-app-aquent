@@ -11,18 +11,18 @@ public class Client {
 
     @NotNull
     @Size(min = 1, max = 100, message = "Company name is required with maximum length of 100")
-    private String name;
+    private String companyName;
 
     @NotNull
-    @Size(min = 8, max = 50, message = "Company URI is required with maximum length of 50 and minimum length of 8.")
+    @Size(min = 8, max = 100, message = "Company URI is required with maximum length of 50 and minimum length of 8.")
     private String companyURI;
 
     @NotNull
     @Size(min = 10, max = 15, message = "Company phone is required with maximum length of 15 and minimum length of 10.")
-    private String phone;
+    private String phoneNumber;
 
     @NotNull
-    @Size(min = 1, max = 50, message = "Street address is required with maximum length of 50")
+    @Size(min = 1, max = 100, message = "Street address is required with maximum length of 50")
     private String streetAddress;
 
     @NotNull
@@ -38,7 +38,7 @@ public class Client {
     private String zipCode;
 
     public Integer getClientId() {
-        return clientId;
+        return this.clientId;
     }
 
     public void setClientId(Integer clientId) {
@@ -46,15 +46,15 @@ public class Client {
     }
 
     public String getName() {
-        return name;
+        return this.companyName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.companyName = name;
     }
 
     public String getCompanyURI() {
-        return companyURI;
+        return this.companyURI;
     }
 
     public void setCompanyURI(String companyURI) {
@@ -62,15 +62,15 @@ public class Client {
     }
 
     public String getPhone() {
-        return phone;
+        return this.phoneNumber;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phoneNumber = phone;
     }
 
     public String getStreetAddress() {
-        return streetAddress;
+        return this.streetAddress;
     }
 
     public void setStreetAddress(String streetAddress) {
@@ -78,7 +78,7 @@ public class Client {
     }
 
     public String getCity() {
-        return city;
+        return this.city;
     }
 
     public void setCity(String city) {
@@ -86,7 +86,7 @@ public class Client {
     }
 
     public String getState() {
-        return state;
+        return this.state;
     }
 
     public void setState(String state) {
@@ -94,7 +94,7 @@ public class Client {
     }
 
     public String getZipCode() {
-        return zipCode;
+        return this.zipCode;
     }
 
     public void setZipCode(String zipCode) {
@@ -103,6 +103,6 @@ public class Client {
 
     @Override
     public String toString() {
-        return this.name;
+        return this.companyName;
     }
 }

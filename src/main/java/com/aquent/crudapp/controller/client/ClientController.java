@@ -37,7 +37,7 @@ public class ClientController {
      * On success, the client name is sent.
      * On failure, the validation errors are sent.
      *
-     * @param client populated bean for person
+     * @param client - a populated bean for client
      * @return client name as single-element list to check in frontend.
      */
     @PostMapping(value= "create")
@@ -57,7 +57,7 @@ public class ClientController {
      * On success, the client name is sent.
      * On failure, the validation errors are sent.
      *
-     * @param client populated bean for person
+     * @param client - a populated bean for client
      * @return client name as single-element list to check in frontend.
      */
     @PutMapping(value = "edit")
@@ -75,7 +75,7 @@ public class ClientController {
     /**
      * Handles client deletion
      *
-     * @param clientId the ID of the client to be deleted
+     * @param clientId - ID of the client to be deleted
      * @return true if success, else false
      */
     @DeleteMapping(value = "delete")
