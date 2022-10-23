@@ -16,7 +16,7 @@ public interface PersonService {
      *
      * @return list of person records
      */
-    List<Person> listPeople();
+    List<Person> listPerson();
 
     /**
      * Creates a new person record.
@@ -55,4 +55,14 @@ public interface PersonService {
      * @return list of error messages
      */
     List<String> validatePerson(Person person);
+
+
+
+    List<Person> listAssociatedContacts(Integer clientId);
+
+    List<Person> listUnassociatedContacts();
+
+    int addClientToPerson(Integer personId, Integer clientId);
+
+    int deleteAssociatedClient(Integer personId);
 }

@@ -29,7 +29,7 @@ public class DefaultPersonService implements PersonService {
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public List<Person> listPeople() {
+    public List<Person> listPerson() {
         return personDao.listPeople();
     }
 
@@ -67,4 +67,29 @@ public class DefaultPersonService implements PersonService {
         Collections.sort(errors);
         return errors;
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public List<Person> listAssociatedContacts(Integer clientId) {
+        return personDao.listAssociatedContacts(clientId);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public List<Person> listUnassociatedContacts() {
+        return personDao.listUnassociatedContacts();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = false)
+    public int addClientToPerson(Integer personId, Integer clientId) {
+        return personDao.addClientToPerson(personId, clientId);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = false)
+    public int deleteAssociatedClient(Integer personId) {
+        return personDao.deleteAssociatedClient(personId);
+    }
+
 }
