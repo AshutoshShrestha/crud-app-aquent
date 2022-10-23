@@ -47,4 +47,32 @@ public interface PersonDao {
      * @param id the person ID
      */
     void deletePerson(Integer id);
+
+    /**
+     * lists all associated persons given a clientid
+     *
+     * @param - list of persons
+     */
+    List<Person> listAssociatedContacts(Integer clientId);
+
+    /**
+     * list all persons who are unassociated with in any company
+     *
+     * @param - list of persons
+     */
+    List<Person> listUnassociatedContacts();
+
+    /**
+     * associates a client to a person
+     *
+     * @param - id of the client and person to be associated
+     */
+    int addClientToPerson(Integer personId, Integer clientId);
+
+    /**
+     * deletes a client association from a person
+     *
+     * @param - id of the person to be disassociated from their respective client
+     */
+    int deleteAssociatedClient(Integer personId);
 }
