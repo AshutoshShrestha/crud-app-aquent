@@ -25,11 +25,13 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import { Divider, IconButton, List, ListItem, InputLabel, ListItemSecondaryAction, ListItemText, MenuItem, Select, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import ClientService from "../services/ClientService";
+import ContactService from "../services/ContactService";
 
 export default function Client(){
     const [showDetail, setShowDetail] = React.useState(false);
     const [clientIndex, setclientIndex] = React.useState(0);
     const [clientsList, setclientsList] = React.useState({});
+    const [associatedContacts, setAssociatedContacts] = React.useState(new Object);
 
     // add form code
     const defaultAddFormValues = {
@@ -147,6 +149,7 @@ export default function Client(){
     // show client detail code
     const showClient = (clientIndex) => {
         setclientIndex(clientIndex);
+        setAssociatedContacts(getAssociatedContacts_list());
         setShowDetail(true);
     };
     
@@ -179,11 +182,27 @@ export default function Client(){
             });
     };
 
-    const getAssociatedContacts = () =>{
-        return [];
+    const getAssociatedContacts_list = () =>{
+        const clientId = Object.keys(clientsList).length !== 0? clientsList[clientIndex]['clientId'] : -1;
+        ContactService.getAssociatedContacts(clientId)
+        .then(function (response) {
+            console.log("Associated clients: " + response.data.length);
+            return response.data;
+            // console.log(contactsList[0]['firstName']);
+            // response.data.map((object)=>{
+            //     console.log(Object.keys(object));
+            // })
+            // console.log("All people: " + response.data);
+        })  
+        .catch(function (error) {
+            console.log(error);
+        })
+        .then(function () {
+            // always executed
+        }); 
     }
 
-    const getUnassociatedContacts = () =>{
+    const getUnassociatedContacts_list = () =>{
         return [];
     }
 
@@ -290,29 +309,25 @@ export default function Client(){
                         <Divider/>
                         <div className="client-contacts">
                             <div className="contacts-title">
-                                <h4> Contacts </h4>
+                                <h4> <bold>Contacts</bold> </h4>
                                 
                             </div>
                             <Paper style={{maxHeight: 200, overflow: 'auto'}}>
                                 <List dense={true} >
                                     {
-
-                                        // clientsList[clientIndex]['contactList'].map((contact, index) => {
-                                        //     return (
+                                        // Object.keys(associatedContacts).length !== 0?
+                                        // associatedContacts.map((contact, index) => {
+                                        // return(
                                         //     <>
                                         //         <ListItem
                                         //             key = {index}
                                         //             >
                                         //             <ListItemText primary={contact.firstname + " " + contact.lastname}/>
-                                        //             <ListItemSecondaryAction>
-                                        //                 <IconButton edge="end" aria-label="delete" onClick={()=>deleteContactFromClient(clientIndex, index)}>
-                                        //                     <DeleteIcon />
-                                        //                 </IconButton>
-                                        //             </ListItemSecondaryAction>
                                         //         </ListItem>
                                         //         <Divider/>
-                                        //     </>);
+                                        //     </>)
                                         // })
+                                        // :(()=>{})
                                     }                               
                                 </List>
                             </Paper>
@@ -518,10 +533,12 @@ export default function Client(){
                             setCurrentValue(e.target.value)
                         }}
                     >
-                    {getAssociatedContacts().map((contact)=>{
-                        <MenuItem value={contact.personId}
-                        >{contact.firstName + " " + contact.lastName}</MenuItem>
-                        })
+                    {
+                        // Object.keys(clientsList).length !== 0?
+                        //     getUnassociatedContacts_list().map((contact)=>{
+                        //     <MenuItem value={contact.personId}
+                        //     >{contact.firstName + " " + contact.lastName}</MenuItem>
+                        // }):null
                     }
                     </Select>
                                  
@@ -538,10 +555,12 @@ export default function Client(){
                             setCurrentValue(e.target.value)
                         }}
                     >
-                    {getUnassociatedContacts().map((contact)=>{
-                        return (<MenuItem value={contact.personId}
-                        >{contact.firstName + " " + contact.lastName}</MenuItem>);
-                        })
+                     {
+                        // Object.keys(clientsList).length !== 0?
+                        //     getAssociatedContacts_list().map((contact)=>{
+                        //     <MenuItem value={contact.personId}
+                        //     >{contact.firstName + " " + contact.lastName}</MenuItem>
+                        // }):null
                     }
                     </Select>
                 </DialogContent>:null }

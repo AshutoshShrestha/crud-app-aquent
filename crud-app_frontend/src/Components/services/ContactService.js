@@ -7,7 +7,8 @@ const GET_CONTACT_LIST = baseURL + 'person/list';
 const ADD_CONTACT = baseURL + 'person/create';
 const EDIT_CONTACT = baseURL + 'person/edit';
 const DELETE_CONTACT = baseURL + 'person/delete';
-
+const ASSOCIATED_CONTACT_LIST = baseURL + 'person/listAssociatedContacts';
+const UNASSOCIATED_CONTACT_LIST = baseURL + 'person/listUnassociatedContacts';
 
 class ContactSerivce {
 
@@ -43,7 +44,13 @@ class ContactSerivce {
         return axios.delete(DELETE_CONTACT + "?personId=" + contactId);
     }
 
+    getAssociatedContacts(clientId){
+        return axios.get(ASSOCIATED_CONTACT_LIST + "?clientId=" + clientId);
+    }
 
+    getUnassociatedContacts(){
+        return axios.get(UNASSOCIATED_CONTACT_LIST);
+    }
 
 }
 
