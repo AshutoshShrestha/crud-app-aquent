@@ -334,7 +334,7 @@ export default function Contact(){
                 <DialogContent>
                     <DialogContentText>
                         <div className="contact-body">
-                            {/* { Object.keys(contactsList).length !== 0? 
+                            { Object.keys(contactsList).length !== 0? 
                             <div>
                                 <h4> First name: {Object.keys(contactsList).length !== 0? contactsList[contactId]['firstName'] : null} </h4>
                                 <h4> Last name: {contactsList[contactId]['lastName']} </h4>
@@ -347,7 +347,7 @@ export default function Contact(){
                                 } </h4> 
                                 <h4> Company: {getClientByContact(contactsList[contactId]['personId'])}</h4>
                             </div> : null
-                        } */}
+                        }
                         </div>
                         <Divider/>
                     </DialogContentText>
