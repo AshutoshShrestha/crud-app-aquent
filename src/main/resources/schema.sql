@@ -12,10 +12,10 @@ CREATE TABLE person (
 
 CREATE TABLE client(
     client_id integer IDENTITY,
-    client_name varchar(50) NOT NULL,
+    client_name varchar(100) NOT NULL,
     client_phone varchar(15) NOT NULL UNIQUE,
-    client_uri varchar(50) NOT NULL UNIQUE,
-    street_address varchar(50) NOT NULL,
+    client_uri varchar(100) NOT NULL UNIQUE,
+    street_address varchar(100) NOT NULL,
     city varchar(50) NOT NULL,
     state varchar(2) NOT NULL,
     zip_code varchar(5) NOT NULL
